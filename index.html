@@ -9,35 +9,47 @@
   </head>
 
   <body>
+    <!--header for øverste seksjonen på nettsiden - img class er for logo -->
     <header class="header">
       <img class="logo" alt="Placeholder" src="icons/bracket.png" />
 
-      <nav>
+        <!--nav for navigasjon i header
+        ul for å lage liste/oversikt over elementene i header 
+        li for hvert element i listen-->
+        <nav>
         <ul class="navList">
           <a href="">
-            <li></li>
+            <li>Hjem</li>
           </a>
 
           <a href="">
-            <li></li>
+            <li>Pokemon</li>
           </a>
 
           <a href="">
-            <li></li>
+            <li>Kontakt</li>
           </a>
         </ul>
       </nav>
     </header>
 
+    <!-- main er hovedinnholdet til nettsiden
+    section og class + h1 for overskrift
+    ul for å lage en liste og id="display" for å koble informasjon fra js og API-->
     <main>
       <section class="section">
-        <h1>Min liste over [blank]</h1>
+        <h1>Min liste over Pokemon</h1>
         <ul id="display"></ul>
       </section>
     </main>
-
+    
+    <!-- footer for nederste seksjon/del av nettsiden
+    <p> for å legge inn tekst
+      a class for å legge inn link til url
+    img src for å legge inn ikon/bilde
+    <p> for å legge til tekst-->
     <footer class="footer">
-      <p>Laget av Julie Hauge</p>
+      <p>Laget av Peder Kleppe</p>
       <a class="contact" href="https://github.com/julieisobelle">
         <img src="icons/github.png" alt="Placeholder" />
         <p>Finn meg på github for å se mer</p>

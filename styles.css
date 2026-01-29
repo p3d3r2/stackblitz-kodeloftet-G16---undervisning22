@@ -1,7 +1,8 @@
 /* -- VARIABLES --  */
+/* Samler farger og spacing på ett sted */
 :root {
-  --primaryColor: rgb(46, 139, 87);
-  --secondaryColor: rgba(46, 139, 86, 0.656);
+  --primaryColor: rgb(244, 246, 246);
+  --secondaryColor: rgba(5, 239, 184, 0.656);
   --darkColor: rgb(13, 13, 13);
   --lightColor: rgb(253, 253, 253);
 
@@ -14,6 +15,7 @@
   margin: 0;
 }
 
+/* Sørger for at bilder aldri blir bredere enn containeren sin */
 img {
   max-width: 100%;
 }
@@ -23,34 +25,38 @@ img {
 }
 
 /* -- HEADER -- */
+/* Header bruker flex for å plassere logo og navigasjon på hver sin side */
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Skyver innhold til hver sin kant */
   padding: var(--spacingLarge);
   border-bottom: 1px solid var(--primaryColor);
   box-shadow: 2px 2px 20px 2px var(--primaryColor);
-  position: sticky;
+  position: sticky; /* Gjør at headeren følger med ved scroll */
   top: 0;
-  background-color: var(--lightColor);
+  background-color: var(--lightColor); 
 }
 
+/* Logo har fast størrelse for konsistent layout */
 .logo {
   height: 32px;
   width: 32px;
   background-color: var(--lightColor);
 }
 
-/* NAV */
+/* -- NAV -- */
+/* Flex brukes for å legge navigasjonslenker horisontalt */
 .navList {
   display: flex;
-  gap: var(--spacingLarge);
-  list-style-type: none;
-  padding-inline-start: 0;
+  gap: var(--spacingLarge); /* Avstand mellom lenker */
+  list-style-type: none; 
+  padding-inline-start: 0; 
 }
 
 /* -- MAIN -- */
+/* Main bruker flex for å sentrere innhold både horisontalt og vertikalt */
 main {
-  min-height: 100svh;
+  min-height: 100svh; /* Full høyde av skjermen */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,12 +64,13 @@ main {
   background-color: var(--secondaryColor);
 }
 
+/* Section er en fleksibel container for innhold */
 .section {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Innhold stables vertikalt */
   align-items: center;
   justify-content: flex-start;
-  gap: var(--spacingSmall);
+  gap: var(--spacingSmall); /* Avstand mellom elementer */
   padding: var(--spacingSmall);
 
   background-color: var(--lightColor);
@@ -72,9 +79,10 @@ main {
 }
 
 /* -- FOOTER -- */
+/* Footer bruker flex for å sentrere alt innhold */
 .footer {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Innhold i kolonne */
   align-items: center;
   justify-content: center;
   border-top: 1px solid var(--primaryColor);
@@ -82,6 +90,7 @@ main {
   padding: var(--spacingLarge);
 }
 
+/* Kontaktinfo vises på én linje med litt luft mellom elementer */
 .contact {
   display: flex;
   align-items: center;
@@ -91,8 +100,9 @@ main {
 }
 
 /* -- MEDIA -- */
+/* Tilpasser for ulike skjermstørrelser (tablet/mobil) */
 @media (max-width: 769px) {
   .section {
-    width: 300px;
+    width: 300px; 
   }
 }
