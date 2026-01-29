@@ -1,0 +1,98 @@
+/* -- VARIABLES --  */
+:root {
+  --primaryColor: rgb(46, 139, 87);
+  --secondaryColor: rgba(46, 139, 86, 0.656);
+  --darkColor: rgb(13, 13, 13);
+  --lightColor: rgb(253, 253, 253);
+
+  --spacingSmall: 8px;
+  --spacingLarge: 16px;
+}
+
+/* -- GLOBAL -- */
+* {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+/* -- HEADER -- */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacingLarge);
+  border-bottom: 1px solid var(--primaryColor);
+  box-shadow: 2px 2px 20px 2px var(--primaryColor);
+  position: sticky;
+  top: 0;
+  background-color: var(--lightColor);
+}
+
+.logo {
+  height: 32px;
+  width: 32px;
+  background-color: var(--lightColor);
+}
+
+/* NAV */
+.navList {
+  display: flex;
+  gap: var(--spacingLarge);
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+/* -- MAIN -- */
+main {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondaryColor);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--spacingSmall);
+  padding: var(--spacingSmall);
+
+  background-color: var(--lightColor);
+  border: 1px solid var(--primaryColor);
+  box-shadow: 2px 2px 20px 2px var(--primaryColor);
+}
+
+/* -- FOOTER -- */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid var(--primaryColor);
+  box-shadow: 2px 2px 20px 2px var(--primaryColor);
+  padding: var(--spacingLarge);
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--darkColor);
+}
+
+/* -- MEDIA -- */
+@media (max-width: 769px) {
+  .section {
+    width: 300px;
+  }
+}
