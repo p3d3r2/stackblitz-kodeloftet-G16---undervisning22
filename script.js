@@ -4,8 +4,7 @@ async function fetchData() {
   console.log('This is fetchData function');
 
   // Setter opp en variabel som henter data fra en URL
-  const data = await fetch('https://pokeapi.co/api/v2/pokemon/ditto');
-  const data2 = await fetch('https://pokeapi.co/api/v2/pokemon/');
+  const data = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
   console.log(data);
 
   // Setter opp en variabel som gjør dataen vi hentet lesbar
@@ -20,19 +19,20 @@ async function displayData() {
   // Siden vi bruker to funksjoner må vi ta imot den første funksjonen først
   const response = await fetchData();
   console.log(response);
-  console.log(response.sprites.front_shiny)
+  console.log(response.results[0]);
+  console.log(response.results[0].name)
 
 
 
+  // Setter opp en variabel som forkorter koden vi må skrive
+  const catFact = response.results;
 
   // Setter opp en forEach som "looper" gjennom (index) og gjør koden i (curly-brackets) like mange ganger som der er object i array
+ catFact.forEach((item) => {
     const displayItem = document.createElement("li");
-    displayItem.textContent = response.name;
+    displayItem.textContent = item.name;
     display.appendChild(displayItem);
-
-    const displayImage = document.createElement("img");
-    displayImage.src = response.sprites.front_shiny;
-    display.appendChild(displayImage);
-  };
+  });
+}
 
 displayData();
