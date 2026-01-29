@@ -4,7 +4,8 @@ async function fetchData() {
   console.log('This is fetchData function');
 
   // Setter opp en variabel som henter data fra en URL
-  const data = await fetch('https://catfact.ninja/facts');
+  const data = await fetch('https://pokeapi.co/api/v2/pokemon/ditto');
+  const data2 = await fetch('https://pokeapi.co/api/v2/pokemon/');
   console.log(data);
 
   // Setter opp en variabel som gjør dataen vi hentet lesbar
@@ -19,20 +20,19 @@ async function displayData() {
   // Siden vi bruker to funksjoner må vi ta imot den første funksjonen først
   const response = await fetchData();
   console.log(response);
-  console.log(response.data);
-  console.log(response.data[0]);
-  console.log(response.data[0].fact);
+  console.log(response.sprites.front_shiny)
 
 
-  // Setter opp en variabel som forkorter koden vi må skrive
-  const catFact = response.data;
+
 
   // Setter opp en forEach som "looper" gjennom (index) og gjør koden i (curly-brackets) like mange ganger som der er object i array
- catFact.forEach((item) => {
     const displayItem = document.createElement("li");
-    displayItem.textContent = item.fact;
+    displayItem.textContent = response.name;
     display.appendChild(displayItem);
-  });
-}
+
+    const displayImage = document.createElement("img");
+    displayImage.src = response.sprites.front_shiny;
+    display.appendChild(displayImage);
+  };
 
 displayData();
