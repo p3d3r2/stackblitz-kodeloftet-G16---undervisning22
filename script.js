@@ -3,36 +3,48 @@ const display = document.querySelector('#display');
 async function fetchData() {
   console.log('This is fetchData function');
 
-  // Setter opp en variabel som henter data fra en URL
-  const data = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
-  console.log(data);
+  try {
+    const data = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
 
-  // Setter opp en variabel som gjør dataen vi hentet lesbar
-  const dataParsed = data.json();
-  console.log(dataParsed);
+    // Sjekker om fetch faktisk fungerte
+    if (!data.ok) {
+      throw new Error('Noe gikk galt med API-kallet');
+    }
 
-  // Siden vi bruker to funksjoner må bi returnere variabelen vi vil ta med videre
-  return dataParsed;
+    const dataParsed = await data.json();
+    return dataParsed;
+
+  } catch (error) {
+    console.error(error);
+    return null; // Viktig for videre sjekk
+  }
 }
 
 async function displayData() {
-  // Siden vi bruker to funksjoner må vi ta imot den første funksjonen først
   const response = await fetchData();
-  console.log(response);
-  console.log(response.results[0]);
-  console.log(response.results[0].name)
 
+  // Hvis fetch feilet
+  if (!response) {
+    const errorMsg = document.createElement('p');
+    errorMsg.textContent = 'Kunne ikke hente data fra API.';
+    display.appendChild(errorMsg);
+    return;
+  }
 
+  const pokemonList = response.results;
 
-  // Setter opp en variabel som forkorter koden vi må skrive
-  const catFact = response.results;
-
-  // Setter opp en forEach som "looper" gjennom (index) og gjør koden i (curly-brackets) like mange ganger som der er object i array
- catFact.forEach((item) => {
-    const displayItem = document.createElement("li");
-    displayItem.textContent = item.name;
-    display.appendChild(displayItem);
-  });
+  // Hvis API-et returnerer tom liste
+  if (pokemonList.length === 0) {
+    const noResults = document.createElement('p');
+    noResults.textContent = 'Ingen resultater funnet.';
+    display.appendChild(noResults);
+  } else {
+    pokemonList.forEach((item) => {
+      const displayItem = document.createElement("li");
+      displayItem.textContent = item.name;
+      display.appendChild(displayItem);
+    });
+  }
 }
 
 displayData();
